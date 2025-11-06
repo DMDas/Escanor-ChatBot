@@ -1,0 +1,209 @@
+/* === 1. Imports & Variables === */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root {
+  /* Theme colors */
+  --bg-dark-primary: #0e0e0e;
+  --bg-dark-secondary: #181818;
+  --bg-dark-tertiary: #222;
+  --bg-dark-quaternary: #2c2c2c;
+  --bg-message-bot: #343434;
+
+  --text-light: #f1f1f1;
+  --text-dark: #111;
+
+  --accent-color: #ffb300;
+  --accent-color-hover: #e6a100;
+  --user-msg-color: #3b82f6;
+  --scroll-thumb: #555;
+
+  /* Fonts */
+  --font-primary: 'Poppins', sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.25s ease;
+}
+
+/* === 2. Global Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg-dark-primary);
+  color: var(--text-light);
+  font-family: var(--font-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+
+/* === 3. Chat Container === */
+.chat-container {
+  background: var(--bg-dark-secondary);
+  width: 420px;
+  max-width: 90vw;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25),
+    0 0 25px rgba(255, 179, 0, 0.1);
+  transition: transform var(--transition-fast);
+}
+
+.chat-container:hover {
+  transform: translateY(-2px);
+}
+
+/* === 4. Header === */
+.chat-header {
+  background: var(--accent-color);
+  padding: 16px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-dark);
+  letter-spacing: 0.4px;
+  border-bottom: 1px solid var(--bg-dark-tertiary);
+  font-size: 1.1rem;
+  user-select: none;
+}
+
+/* === 5. Message Box === */
+.chat-box {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar Styling */
+.chat-box::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-box::-webkit-scrollbar-track {
+  background: var(--bg-dark-secondary);
+}
+.chat-box::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 6px;
+}
+.chat-box::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* === 6. Messages === */
+.user-msg,
+.bot-msg {
+  padding: 12px 16px;
+  border-radius: 18px;
+  width: fit-content;
+  max-width: 80%;
+  line-height: 1.5;
+  word-wrap: break-word;
+  animation: fadeInUp 0.25s ease forwards;
+}
+
+.user-msg {
+  background: var(--user-msg-color);
+  margin-left: auto;
+  border-bottom-right-radius: 5px;
+  color: white;
+}
+
+.bot-msg {
+  background: var(--bg-message-bot);
+  margin-right: auto;
+  border-bottom-left-radius: 5px;
+}
+
+/* Simple fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === 7. Input Area === */
+.chat-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  background: var(--bg-dark-tertiary);
+  border-top: 1px solid var(--bg-dark-quaternary);
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px 14px;
+  background: var(--bg-dark-quaternary);
+  border: none;
+  border-radius: 10px;
+  color: var(--text-light);
+  font-size: 14px;
+  outline: none;
+  transition: box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.chat-input input:focus {
+  background: #383838;
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+/* === 8. Send Button === */
+.chat-input button {
+  background: var(--accent-color);
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--text-dark);
+  font-weight: 600;
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.chat-input button:hover {
+  background: var(--accent-color-hover);
+  transform: translateY(-1px);
+}
+
+.chat-input button:active {
+  transform: translateY(1px);
+}
+
+/* === 9. Responsiveness === */
+@media (max-width: 480px) {
+  .chat-container {
+    height: 90vh;
+    border-radius: 0;
+  }
+
+  .chat-header {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  .chat-input input {
+    font-size: 13px;
+  }
+
+  .chat-input button {
+    padding: 10px 14px;
+  }
+}
