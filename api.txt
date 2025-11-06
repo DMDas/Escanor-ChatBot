@@ -1,5 +1,0 @@
-gemini = 'AIzaSyDaGIOUlDGg3gcL0cZMvDrS0KzpJrEGSR8'
-Bot_Api = '8089484830:AAFLz-HVMzy50Ly5ARRBdukCHkOH_KdPqz8'
-mi_id = 1489895685
-
-setx MY_ID "1489895685"
